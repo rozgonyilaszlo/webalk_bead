@@ -4,13 +4,13 @@ $(document).ready(function(){
     });
 
     $("#add-car").on("click", function () {
-        $("#body").load("/home/cars");
+        $("#body").load("/home/car");
         LoadManufacturerNames();
         LoadCars();
     });
 
     $("#add-manufacturer").on("click", function () {
-        $("#body").load("home/manufacturers");
+        $("#body").load("home/manufacturer");
         LoadManufacturers();
     });
 
@@ -53,7 +53,7 @@ $(document).ready(function(){
         var manufacturer = $(this).html();
         document.cookie="name="+manufacturer;
 
-        $.getJSON("home/manufacturer", function (data) {
+        $.getJSON("home/manufacturercookie", function (data) {
             var carNames = data.map(function(car){
                 return car.name;
             });

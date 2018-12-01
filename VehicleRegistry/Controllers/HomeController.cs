@@ -20,20 +20,57 @@ namespace VehicleRegistry.Controllers
 
         public IActionResult Index()
         {
-            _context.Manufacturers.Add(new Manufacturer() { Id = 0, Name = "Volkswagen", Country = "Germany", Founded = new System.DateTime(1937, 05, 28) });
+            return View();
+        }
+
+        public IActionResult Car()
+        {
+            return View();
+        }
+
+        public IActionResult Manufacturer()
+        {
+            return View();
+        }
+
+        public JsonResult manufacturers()
+        {
+            return Json(_context.Manufacturers.ToList());
+        }
+
+        public JsonResult manufacturerNames()
+        {
+            return Json(_context.Manufacturers.Select(s => s.Name).ToList());
+        }
+
+        public JsonResult cars()
+        {
+            return Json(_context.Cars.ToList());
+        }
+
+        public JsonResult manufacturercookie()
+        {
+            string cookieValue;
+
+            HttpContext.Request.Cookies.TryGetValue("name", out cookieValue);
+
+            List<Car> cars = _context.Cars.Where(w => w.Manufacturer == cookieValue).ToList();
+
+            return Json(cars);
+        }
+
+        [HttpPost]
+        public void addCar(Car car)
+        {
+            _context.Cars.Add(car);
             _context.SaveChanges();
-
-            return View();
         }
 
-        public IActionResult Cars()
+        [HttpPost]
+        public void addManufacturers(Manufacturer manufacturer)
         {
-            return View();
-        }
-
-        public IActionResult Manufacturers()
-        {
-            return View();
+            _context.Manufacturers.Add(manufacturer);
+            _context.SaveChanges();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
