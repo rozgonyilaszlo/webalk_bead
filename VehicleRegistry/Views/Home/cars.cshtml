@@ -1,0 +1,76 @@
+@{
+    Layout = null;
+}
+
+<div class="cars">
+    <div class="small" id="add-new-car">
+        <form class="form">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" name="name" required></td>
+                </tr>
+
+                <tr>
+                    <td>Consumption:</td>
+                    <td><input type="number" name="consumption" min="0" step="0.01" required></td>
+                    <td>l/100km</td>
+                </tr>
+
+                <tr>
+                    <td>Color:</td>
+                    <td><input type="text" name="color" required></td>
+                </tr>
+
+                <tr>
+                    <td>Manufacturer:</td>
+                    <td>
+                        <select id="manufacturer-selector" name="manufacturer">
+
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Available:</td>
+                    <td><input type="number" name="available" min="0" required></td>
+                </tr>
+
+                <tr>
+                    <td>Year:</td>
+                    <td><input type="number" name="year" required></td>
+                </tr>
+
+                <tr>
+                    <td>Horsepower:</td>
+                    <td><input type="number" name="horsepower" min="0" required></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Save">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div class="large" id="cars-table">
+        <table>
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Consumption</td>
+                    <td>Color</td>
+                    <td>Manufacturer</td>
+                    <td>Available</td>
+                    <td>Year</td>
+                    <td>Horsepower</td>
+                </tr>
+            </thead>
+            <tbody id="cars">
+
+            </tbody>
+        </table>
+    </div>
+</div>

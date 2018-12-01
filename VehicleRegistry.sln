@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2048
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleRegistry", "VehicleRegistry\VehicleRegistry.csproj", "{F7376992-694A-4820-9C74-A74789D3D2AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7376992-694A-4820-9C74-A74789D3D2AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7376992-694A-4820-9C74-A74789D3D2AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7376992-694A-4820-9C74-A74789D3D2AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7376992-694A-4820-9C74-A74789D3D2AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E6FF3EE0-FFA3-42AC-9FAE-BEED0CF85398}
+	EndGlobalSection
+EndGlobal
