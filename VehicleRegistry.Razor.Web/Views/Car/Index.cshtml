@@ -1,0 +1,16 @@
+﻿@model IEnumerable<VehicleRegistry.Core.Models.Car>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="cars">
+    <div class="small" id="add-new-car">
+        @await Html.PartialAsync("Create", new VehicleRegistry.Core.Models.Car())
+    </div>
+
+    <div class="large" id="cars-table">
+        @await Html.PartialAsync("List", Model)
+    </div>
+</div>

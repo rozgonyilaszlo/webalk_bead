@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleRegistry.Core", "VehicleRegistry.Core\VehicleRegistry.Core.csproj", "{A0126E8E-CBD4-4D2A-B711-D937497DEC6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleRegistry.Core", "VehicleRegistry.Core\VehicleRegistry.Core.csproj", "{A0126E8E-CBD4-4D2A-B711-D937497DEC6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleRegistry.Web", "VehicleRegistry.Web\VehicleRegistry.Web.csproj", "{1A5FA816-4EB4-4069-A3A9-2DA1E4C76861}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleRegistry.Web", "VehicleRegistry.Web\VehicleRegistry.Web.csproj", "{1A5FA816-4EB4-4069-A3A9-2DA1E4C76861}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleRegistry.Razor.Web", "VehicleRegistry.Razor.Web\VehicleRegistry.Razor.Web.csproj", "{25EAC2D7-6D6D-4EDF-885D-73413C1C0422}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleRegistry.Razor.Web", "VehicleRegistry.Razor.Web\VehicleRegistry.Razor.Web.csproj", "{25EAC2D7-6D6D-4EDF-885D-73413C1C0422}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

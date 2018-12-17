@@ -50,6 +50,14 @@ namespace VehicleRegistry.Web
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<DatabaseContext>();
+                context.Database.EnsureCreated();
+
+                DatabaseContext.UploadData(context);
+            }
+
             app.UseStaticFiles();
             app.UseCookiePolicy();
 

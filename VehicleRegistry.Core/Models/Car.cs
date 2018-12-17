@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,13 +10,13 @@ namespace VehicleRegistry.Core.Models
     public class Car
     {
         public int Id { get; set; }
-
+        
         public string Name { get; set; }
-
+        
         public double Consumption { get; set; }
-
+        
         public string Color { get; set; }
-
+        
         public string Manufacturer { get; set; }
 
         public int Available { get; set; }

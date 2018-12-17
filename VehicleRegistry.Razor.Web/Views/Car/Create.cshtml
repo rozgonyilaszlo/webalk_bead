@@ -1,0 +1,49 @@
+﻿@model VehicleRegistry.Core.Models.Car
+
+<form class="form">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td>@Html.TextBoxFor(m => m.Name)</td>
+        </tr>
+
+        <tr>
+            <td>Consumption:</td>
+            <td>@Html.TextBoxFor(m => m.Consumption)</td>
+            <td>l/100km</td>
+        </tr>
+
+        <tr>
+            <td>Color:</td>
+            <td>@Html.TextBoxFor(m => m.Color)</td>
+        </tr>
+
+        <tr>
+            <td>Manufacturer:</td>
+            <td>
+                <select id="manufacturer-selector" name="manufacturer"></select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Available:</td>
+            <td>@Html.TextBoxFor(m => m.Available)</td>
+        </tr>
+
+        <tr>
+            <td>Year:</td>
+            <td>@Html.TextBoxFor(m => m.Year)</td>
+        </tr>
+
+        <tr>
+            <td>Horsepower:</td>
+            <td>@Html.TextBoxFor(m => m.Horsepower)</td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Save">
+            </td>
+        </tr>
+    </table>
+</form>

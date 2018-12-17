@@ -5,17 +5,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using VehicleRegistry.Core.Database;
+using VehicleRegistry.Core.Handlers;
 using VehicleRegistry.Core.Models;
 
 namespace VehicleRegistry.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly DatabaseContext _context;
+        private CarHandler carHandler;
+        private ManufacturerHandler manufacturerHandler;
 
         public HomeController(DatabaseContext context)
         {
-            _context = context;
+            carHandler = new CarHandler(context);
+            manufacturerHandler = new ManufacturerHandler(context);
         }
 
         public IActionResult Index()
@@ -35,17 +38,17 @@ namespace VehicleRegistry.Web.Controllers
 
         public JsonResult manufacturers()
         {
-            return Json(_context.Manufacturers.ToList());
+            return Json(manufacturerHandler.GetAll());
         }
 
         public JsonResult manufacturerNames()
         {
-            return Json(_context.Manufacturers.Select(s => s.Name).ToList());
+            return Json(manufacturerHandler.GetNames());
         }
 
         public JsonResult cars()
         {
-            return Json(_context.Cars.ToList());
+            return Json(carHandler.GetAll());
         }
 
         public JsonResult manufacturercookie()
@@ -54,7 +57,7 @@ namespace VehicleRegistry.Web.Controllers
 
             HttpContext.Request.Cookies.TryGetValue("name", out cookieValue);
 
-            List<Car> cars = _context.Cars.Where(w => w.Manufacturer == cookieValue).ToList();
+            List<Car> cars = carHandler.GetAll(cookieValue);
 
             return Json(cars);
         }
@@ -62,15 +65,13 @@ namespace VehicleRegistry.Web.Controllers
         [HttpPost]
         public void addCar(Car car)
         {
-            _context.Cars.Add(car);
-            _context.SaveChanges();
+            carHandler.Create(car);
         }
 
         [HttpPost]
         public void addManufacturers(Manufacturer manufacturer)
         {
-            _context.Manufacturers.Add(manufacturer);
-            _context.SaveChanges();
+            manufacturerHandler.Create(manufacturer);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
