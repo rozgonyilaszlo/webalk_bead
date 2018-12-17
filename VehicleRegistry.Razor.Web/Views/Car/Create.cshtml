@@ -1,43 +1,50 @@
-﻿@model VehicleRegistry.Core.Models.Car
+﻿@model VehicleRegistry.Razor.Web.ViewModels.CreateCarViewModel
 
 <form class="form">
+    @Html.ValidationSummary(true)
+
     <table>
         <tr>
             <td>Name:</td>
-            <td>@Html.TextBoxFor(m => m.Name)</td>
+            <td>@Html.TextBoxFor(m => m.Car.Name)</td>
         </tr>
 
         <tr>
             <td>Consumption:</td>
-            <td>@Html.TextBoxFor(m => m.Consumption)</td>
+            <td>@Html.TextBoxFor(m => m.Car.Consumption)</td>
             <td>l/100km</td>
         </tr>
 
         <tr>
             <td>Color:</td>
-            <td>@Html.TextBoxFor(m => m.Color)</td>
+            <td>@Html.TextBoxFor(m => m.Car.Color)</td>
         </tr>
 
         <tr>
             <td>Manufacturer:</td>
             <td>
-                <select id="manufacturer-selector" name="manufacturer"></select>
+                <select id="manufacturer-selector" name="manufacturer">
+                    @foreach (var item in Model.ManufacturerName)
+                    {
+                        <option value="@item">@item</option>
+                    }
+                </select>
             </td>
         </tr>
 
         <tr>
             <td>Available:</td>
-            <td>@Html.TextBoxFor(m => m.Available)</td>
+            <td>@Html.TextBoxFor(m => m.Car.Available)</td>
         </tr>
 
         <tr>
             <td>Year:</td>
-            <td>@Html.TextBoxFor(m => m.Year)</td>
+            <td>@Html.TextBoxFor(m => m.Car.Year)</td>
         </tr>
 
         <tr>
             <td>Horsepower:</td>
-            <td>@Html.TextBoxFor(m => m.Horsepower)</td>
+            <td>@Html.TextBoxFor(m => m.Car.Horsepower)</td>
         </tr>
 
         <tr>

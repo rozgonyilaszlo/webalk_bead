@@ -6,43 +6,56 @@ using Microsoft.AspNetCore.Mvc;
 using VehicleRegistry.Core.Database;
 using VehicleRegistry.Core.Handlers;
 using VehicleRegistry.Core.Models;
+using VehicleRegistry.Razor.Web.ViewModels;
 
 namespace VehicleRegistry.Razor.Web.Controllers
 {
     public class CarController : Controller
     {
         private CarHandler carHandler;
+        private ManufacturerHandler manufacturerHandler;
 
         public CarController(DatabaseContext context)
         {
             carHandler = new CarHandler(context);
-        }
-
-        public IActionResult Index()
-        {
-            return View(carHandler.GetAll());
+            manufacturerHandler = new ManufacturerHandler(context);
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult Index()
         {
-            return PartialView();
+            return View();
         }
 
-        public IActionResult Create(Car car)
+        [HttpGet]
+        public PartialViewResult Create()
+        {
+            return PartialView(new CreateCarViewModel() {
+                Car = new Car(),
+                ManufacturerName = manufacturerHandler.GetNames()
+            });
+        }
+
+        [HttpPost]
+        public IActionResult Create(CreateCarViewModel model)
         {
             if (ModelState.IsValid)
             {
-                carHandler.Create(car);
-                return PartialView(new Car());
+                carHandler.Create(model.Car);
+                return PartialView(new CreateCarViewModel() {
+                    Car = new Car(),
+                    ManufacturerName = manufacturerHandler.GetNames()
+                });
             }
             else
             {
-                return PartialView(car);
+                model.ManufacturerName = manufacturerHandler.GetNames();
+                return PartialView(model);
             }
         }
 
-        public IActionResult List()
+        [HttpGet]
+        public PartialViewResult List()
         {
             return PartialView(carHandler.GetAll());
         }

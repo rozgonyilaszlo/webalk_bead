@@ -27,7 +27,7 @@ namespace VehicleRegistry.Core.Handlers
             _context.SaveChanges();
         }
 
-        public object GetNames()
+        public List<string> GetNames()
         {
             return _context.Manufacturers.Select(s => s.Name).ToList();
         }
