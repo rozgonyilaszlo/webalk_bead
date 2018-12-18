@@ -65,6 +65,7 @@ namespace VehicleRegistry.Razor.Web.Controllers
         {
             base.Dispose(disposing);
             manufacturerHandler.Dispose();
+            carHandler.Dispose();
         }
     }
 }
