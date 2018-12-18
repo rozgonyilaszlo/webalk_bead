@@ -28,7 +28,7 @@ namespace VehicleRegistry.Razor.Web.Controllers
         }
 
         [HttpGet]
-        public PartialViewResult Create()
+        public IActionResult Create()
         {
             return PartialView(new CreateCarViewModel() {
                 Car = new Car(),
@@ -55,7 +55,7 @@ namespace VehicleRegistry.Razor.Web.Controllers
         }
 
         [HttpGet]
-        public PartialViewResult List()
+        public IActionResult List()
         {
             return PartialView(carHandler.GetAll());
         }
@@ -64,6 +64,7 @@ namespace VehicleRegistry.Razor.Web.Controllers
         {
             base.Dispose(disposing);
             carHandler.Dispose();
+            manufacturerHandler.Dispose();
         }
     }
 }

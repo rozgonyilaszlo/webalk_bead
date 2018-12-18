@@ -1,0 +1,28 @@
+﻿@model VehicleRegistry.Core.Models.Manufacturer
+
+<form class="form">
+    @Html.ValidationSummary(true)
+    
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td>@Html.TextBoxFor(m => m.Name)</td>
+        </tr>
+
+        <tr>
+            <td>Country:</td>
+            <td>@Html.TextBoxFor(m => m.Country)</td>
+        </tr>
+
+        <tr>
+            <td>Founded:</td>
+            <td>@Html.TextBoxFor(m => m.Founded)</td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Save">
+            </td>
+        </tr>
+    </table>
+</form>

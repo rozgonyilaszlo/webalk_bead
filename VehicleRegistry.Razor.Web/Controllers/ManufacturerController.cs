@@ -4,41 +4,67 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using VehicleRegistry.Core.Database;
+using VehicleRegistry.Core.Handlers;
 using VehicleRegistry.Core.Models;
 
 namespace VehicleRegistry.Razor.Web.Controllers
 {
     public class ManufacturerController : Controller
     {
-        private readonly DatabaseContext _context;
+        private ManufacturerHandler manufacturerHandler;
+        private CarHandler carHandler;
 
         public ManufacturerController(DatabaseContext context)
         {
-            _context = context;
+            manufacturerHandler = new ManufacturerHandler(context);
+            carHandler = new CarHandler(context);
         }
 
         [HttpGet]
         public IActionResult Index()
         {
+            return View();
+        }
+
+        public IActionResult Create()
+        {
             return View(new Manufacturer());
         }
 
         [HttpPost]
-        public IActionResult Index(Manufacturer manufacturer)
+        public IActionResult Create(Manufacturer manufacturer)
         {
             if (ModelState.IsValid)
             {
-                _context.Manufacturers.Add(manufacturer);
-                _context.SaveChanges();
+                manufacturerHandler.Create(manufacturer);
+                return PartialView(new Manufacturer());
             }
-
-            return View(manufacturer);
+            else
+            {
+                return PartialView(manufacturer);
+            }
         }
 
         [HttpGet]
-        public IActionResult _Manufacturers()
+        public JsonResult Cars()
         {
-            return View(_context.Manufacturers.ToList());
+            string cookieValue;
+
+            HttpContext.Request.Cookies.TryGetValue("name", out cookieValue);
+
+            return Json(carHandler.GetAll(cookieValue));
+        }
+
+        [HttpGet]
+        public IActionResult List()
+        {
+            return PartialView(manufacturerHandler.GetAll());
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+            manufacturerHandler.Dispose();
         }
     }
 }
